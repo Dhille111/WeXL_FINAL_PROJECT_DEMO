@@ -165,7 +165,7 @@ async def main():
         system_instruction=system_instruction,
         params=InputParams(
             vad=GeminiVADParams(
-                silence_duration_ms=450
+                silence_duration_ms=200
             )
         )
     )
