@@ -102,32 +102,36 @@ export interface ChatMessage {
             </div>
           </div>
 
-          <div class="table-container">
-            <table class="faq-table">
-              <thead>
-                <tr>
-                  <th>Question</th>
-                  <th>Answer</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let faq of faqs">
-                  <td class="bold-cell">{{ faq.question }}</td>
-                  <td class="text-muted">{{ faq.answer | slice:0:70 }}{{ faq.answer.length > 70 ? '...' : '' }}</td>
-                  <td>
-                    <div class="action-buttons">
-                      <button class="btn-icon" (click)="editFaq(faq)">
-                        <span class="material-icons text-blue">edit</span>
-                      </button>
-                      <button class="btn-icon" (click)="deleteFaq(faq.id!)">
-                        <span class="material-icons text-red">delete</span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- Search Bar -->
+          <div class="faq-search-bar">
+            <span class="material-icons search-icon">search</span>
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search FAQs by question, answer, or keywords...">
+          </div>
+
+          <!-- FAQ Cards Grid -->
+          <div class="faq-grid-scroll">
+            <div class="faq-tile-card glass-panel" *ngFor="let faq of getFilteredFaqs()">
+              <div class="faq-tile-header">
+                <span class="material-icons faq-tile-icon">help_outline</span>
+                <div class="faq-tile-actions">
+                  <button class="btn-icon" (click)="editFaq(faq)">
+                    <span class="material-icons text-blue">edit</span>
+                  </button>
+                  <button class="btn-icon" (click)="deleteFaq(faq.id!)">
+                    <span class="material-icons text-red">delete</span>
+                  </button>
+                </div>
+              </div>
+              <div class="faq-tile-body">
+                <h4 class="faq-tile-question">{{ faq.question }}</h4>
+                <p class="faq-tile-answer">{{ faq.answer }}</p>
+              </div>
+              <div class="faq-tile-footer" *ngIf="faq.aliases && faq.aliases.length > 0">
+                <div class="alias-tags">
+                  <span class="alias-tag" *ngFor="let tag of faq.aliases">{{ tag }}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -466,6 +470,127 @@ export interface ChatMessage {
     .log-bubble.agent { background: rgba(0, 153, 255, 0.05); align-self: flex-start; width: 85%; }
 
     .log-bubble p { margin: 0.25rem 0 0 0; }
+
+    /* FAQ Section Redesign Styles */
+    .faq-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-search-bar .search-icon {
+      color: #9ca3af;
+      font-size: 1.25rem;
+    }
+
+    .faq-search-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-family: inherit;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    .faq-search-bar input::placeholder {
+      color: #4b5563;
+    }
+
+    .faq-grid-scroll {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .faq-tile-card {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 12px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-tile-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateY(-2px);
+      border-color: rgba(0, 153, 255, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 153, 255, 0.05);
+    }
+
+    .faq-tile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-tile-icon {
+      color: #0099ff;
+      font-size: 1.5rem;
+    }
+
+    .faq-tile-actions {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .faq-tile-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }
+
+    .faq-tile-question {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f3f4f6;
+      line-height: 1.4;
+    }
+
+    .faq-tile-answer {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .faq-tile-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 0.75rem;
+    }
+
+    .alias-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .alias-tag {
+      background: rgba(138, 43, 226, 0.1);
+      color: #a78bfa;
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
   `]
 })
 export class DashboardComponent implements OnInit {
@@ -475,6 +600,9 @@ export class DashboardComponent implements OnInit {
   public sessionMessages: ChatMessage[] = [];
   public selectedSessionId: string | null = null;
 
+  // FAQ Redesign Search state
+  public searchQuery: string = '';
+
   // FAQ CRUD state
   public showFaqForm = false;
   public editingFaqId: number | null = null;
@@ -483,6 +611,16 @@ export class DashboardComponent implements OnInit {
     answer: '',
     aliasesString: ''
   };
+
+  public getFilteredFaqs(): FAQ[] {
+    if (!this.searchQuery) return this.faqs;
+    const q = this.searchQuery.toLowerCase();
+    return this.faqs.filter(f => 
+      f.question.toLowerCase().includes(q) || 
+      f.answer.toLowerCase().includes(q) ||
+      (f.aliases && f.aliases.some(a => a.toLowerCase().includes(q)))
+    );
+  }
 
   private backendUrl = `http://${window.location.hostname}:8080/api`;
 
