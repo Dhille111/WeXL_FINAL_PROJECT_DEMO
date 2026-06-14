@@ -63,7 +63,7 @@ import { AuthService } from '../../core/auth.service';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, #151a26 0%, #0a0c10 100%);
+      background: transparent;
       position: relative;
       overflow: hidden;
       padding: 1rem;
@@ -74,7 +74,7 @@ import { AuthService } from '../../core/auth.service';
       width: 500px;
       height: 500px;
       border-radius: 50%;
-      background: rgba(0, 153, 255, 0.1);
+      background: rgba(157, 34, 124, 0.1);
       filter: blur(150px);
       z-index: 0;
       pointer-events: none;
@@ -97,7 +97,7 @@ import { AuthService } from '../../core/auth.service';
     }
 
     .logo-accent {
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -148,14 +148,14 @@ import { AuthService } from '../../core/auth.service';
 
     input:focus {
       outline: none;
-      border-color: #0099ff;
-      background: rgba(0, 153, 255, 0.02);
-      box-shadow: 0 0 10px rgba(0, 153, 255, 0.15);
+      border-color: var(--color-primary);
+      background: rgba(186, 104, 200, 0.02);
+      box-shadow: 0 0 10px rgba(186, 104, 200, 0.15);
     }
 
     .btn-submit {
       margin-top: 1rem;
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      background: var(--primary-gradient);
       color: white;
       border: none;
       padding: 0.85rem;
@@ -172,7 +172,7 @@ import { AuthService } from '../../core/auth.service';
 
     .btn-submit:hover:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(157, 34, 124, 0.3);
     }
 
     .btn-submit:disabled {
@@ -191,7 +191,7 @@ import { AuthService } from '../../core/auth.service';
     }
 
     .auth-toggle a {
-      color: #0099ff;
+      color: var(--color-primary);
       text-decoration: none;
       font-weight: 500;
     }
@@ -215,6 +215,34 @@ import { AuthService } from '../../core/auth.service';
       border-top-color: white;
       border-radius: 50%;
       animation: spin 0.8s infinite linear;
+    }
+
+    /* Light Theme Styling Overrides for Auth Card */
+    body.light-theme input {
+      background: #ffffff !important;
+      border: 1px solid rgba(15, 23, 42, 0.12) !important;
+      color: #0f172a !important;
+    }
+
+    body.light-theme input:focus {
+      border-color: var(--color-primary) !important;
+      box-shadow: 0 0 10px rgba(157, 34, 124, 0.1) !important;
+    }
+
+    body.light-theme label {
+      color: #475569 !important;
+    }
+
+    body.light-theme h2 {
+      color: #0f172a !important;
+    }
+
+    body.light-theme .subtitle {
+      color: #475569 !important;
+    }
+
+    body.light-theme .auth-toggle {
+      color: #475569 !important;
     }
 
     @keyframes spin {
