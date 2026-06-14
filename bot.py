@@ -22,6 +22,8 @@ from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
 from pipecat.services.google.gemini_live.llm import GeminiLiveLLMService, InputParams, GeminiVADParams
 from pipecat.transports.local.audio import LocalAudioTransport, LocalAudioTransportParams
+from pipecat.processors.frame_processor import FrameProcessor, FrameDirection
+from pipecat.frames.frames import Frame, TranscriptionFrame, TTSTextFrame
 
 load_dotenv(override=True)
 
@@ -147,6 +149,22 @@ def _build_system_instruction(base: str, strict: bool, entries: list[dict[str, A
     return f"{base}\n\n{faq_rules}\n\nFAQs:\n{faq_block}"
 
 
+class TranscriptProcessor(FrameProcessor):
+    async def process_frame(self, frame: Frame, direction: FrameDirection):
+        await super().process_frame(frame, direction)
+        # Log frame type for debugging
+        frame_name = type(frame).__name__
+        if frame_name not in ["AudioRawFrame", "InputAudioRawFrame", "TTSAudioRawFrame", "SystemFrame"]:
+            logger.info(f"TranscriptProcessor ({id(self)}) received frame: {frame_name}")
+        if isinstance(frame, TranscriptionFrame):
+            logger.info(f"User transcript: {frame.text}")
+            await broadcast_transcript("user_transcript", frame.text)
+        elif isinstance(frame, TTSTextFrame):
+            logger.info(f"AI transcript: {frame.text}")
+            await broadcast_transcript("bot_transcript", frame.text)
+        await self.push_frame(frame, direction)
+
+
 async def main():
     transport = LocalAudioTransport(
         LocalAudioTransportParams(
@@ -170,21 +188,16 @@ async def main():
         )
     )
 
-    # Register transcript event handlers
-    @llm.event_handler("on_user_transcript")
-    async def on_user_transcript(llm, text):
-        logger.info(f"User: {text}")
-        await broadcast_transcript("user_transcript", text)
-
-    @llm.event_handler("on_bot_transcript")
-    async def on_bot_transcript(llm, text):
-        logger.info(f"AI: {text}")
-        await broadcast_transcript("bot_transcript", text)
+    # Instantiate custom transcript processors
+    user_transcript_processor = TranscriptProcessor()
+    bot_transcript_processor = TranscriptProcessor()
 
     pipeline = Pipeline(
         [
             transport.input(),
+            user_transcript_processor,
             llm,
+            bot_transcript_processor,
             transport.output(),
         ]
     )
