@@ -14,7 +14,8 @@ import { AuthService } from '../../core/auth.service';
       
       <div class="glass-panel auth-card">
         <div class="logo" routerLink="/landing">
-          <span class="logo-accent">NEC</span> Assistant
+          <img class="college-logo" src="https://www.nrtec.in/wp-content/uploads/2017/03/NEClogo.png" alt="NEC College Logo">
+          <span class="logo-text"><span class="logo-accent">NEC</span> Assistant</span>
         </div>
         
         <h2>{{ isRegisterMode ? 'Create Account' : 'Welcome Back' }}</h2>
@@ -63,7 +64,9 @@ import { AuthService } from '../../core/auth.service';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
+      background: linear-gradient(135deg, rgba(10, 12, 16, 0.72) 0%, rgba(6, 8, 14, 0.82) 100%), 
+                  url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292.jpg') no-repeat center center fixed;
+      background-size: cover;
       position: relative;
       overflow: hidden;
       padding: 1rem;
@@ -89,11 +92,23 @@ import { AuthService } from '../../core/auth.service';
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
       font-size: 1.5rem;
       font-weight: 700;
-      text-align: center;
       margin-bottom: 2rem;
       cursor: pointer;
+    }
+
+    .college-logo {
+      height: 38px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) brightness(1.1);
+    }
+
+    .logo-text {
+      color: var(--text-main);
     }
 
     .logo-accent {
@@ -218,6 +233,17 @@ import { AuthService } from '../../core/auth.service';
     }
 
     /* Light Theme Styling Overrides for Auth Card */
+    body.light-theme .auth-container {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(241, 245, 249, 0.82) 100%), 
+                  url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292.jpg') no-repeat center center fixed !important;
+      background-size: cover !important;
+    }
+
+    body.light-theme .logo-text,
+    :host-context(body.light-theme) .logo-text {
+      color: #0f172a !important;
+    }
+
     body.light-theme input {
       background: #ffffff !important;
       border: 1px solid rgba(15, 23, 42, 0.12) !important;
