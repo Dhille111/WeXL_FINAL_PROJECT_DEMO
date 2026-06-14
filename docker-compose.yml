@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: voice_assistant
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: SecretPassword123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database-postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d voice_assistant"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend-springboot:
+    build:
+      context: ./backend-springboot
+      dockerfile: Dockerfile
+    container_name: spring_backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/voice_assistant
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: SecretPassword123
+      SPRING_PROFILES_ACTIVE: prod
+      JWT_SECRET: D3A7C15904F2E4968C0BE7121F24128D8EBA4F1A5B4C3D2E1F0A9B8C7D6E5F4A
+      AI_SERVICE_URL: http://ai-service-python:8000
+    depends_on:
+      database:
+        condition: service_healthy
+
+  ai-service-python:
+    build:
+      context: ./ai-service-python
+      dockerfile: Dockerfile
+    container_name: python_ai_service
+    ports:
+      - "8000:8000"
+    environment:
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      DAILY_API_KEY: ${DAILY_API_KEY}
+      JWT_SECRET: D3A7C15904F2E4968C0BE7121F24128D8EBA4F1A5B4C3D2E1F0A9B8C7D6E5F4A
+    depends_on:
+      - database
+
+  frontend-angular:
+    build:
+      context: ./frontend-angular
+      dockerfile: Dockerfile
+    container_name: angular_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend-springboot
+
+volumes:
+  postgres_data:

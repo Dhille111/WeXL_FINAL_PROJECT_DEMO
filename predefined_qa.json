@@ -1,0 +1,249 @@
+{
+  "_comment": "NEC Admissions + Placements FAQ - Voice Agent Script",
+  "strict": true,
+  "entries": [
+    {
+      "question": "What is your name?",
+      "aliases": ["Who are you?", "What's your name"],
+      "answer": "I’m your voice assistant. How can I help today?"
+    },
+    {
+      "question": "What can you do?",
+      "aliases": ["How can you help me?", "What do you support?"],
+      "answer": "I can answer questions, help with basic troubleshooting, and guide you through common tasks."
+    },
+    {
+      "question": "How do I contact support?",
+      "aliases": ["Support email", "How can I get help?"],
+      "answer": "You can contact support at support@example.com."
+    },
+    {
+      "question": "What is the eligibility for B.Tech admission?",
+      "aliases": ["B.Tech eligibility", "Can I apply for B.Tech?", "Minimum marks for B.Tech"],
+      "answer": "You must have passed 10+2 with a minimum of 45% aggregate marks, with Physics and Mathematics as mandatory subjects."
+    },
+    {
+      "question": "What is the eligibility for M.Tech admission?",
+      "aliases": ["M.Tech eligibility", "Can I apply for M.Tech?", "Minimum marks for M.Tech"],
+      "answer": "You must hold a B.E. or B.Tech degree in the relevant discipline from a recognized university with a minimum of 50% marks."
+    },
+    {
+      "question": "What is the eligibility for MBA admission?",
+      "aliases": ["MBA eligibility", "Can I apply for MBA?", "Minimum marks for MBA"],
+      "answer": "Any bachelor's degree with a minimum of 50% marks is required."
+    },
+    {
+      "question": "What is the eligibility for MCA admission?",
+      "aliases": ["MCA eligibility", "Can I apply for MCA?", "Minimum marks for MCA"],
+      "answer": "A bachelor's degree with minimum 50% marks is required, plus Mathematics as a subject in 10+2."
+    },
+    {
+      "question": "How are B.Tech seats allotted?",
+      "aliases": [
+        "B.Tech seat allotment",
+        "How are BTech admissions done?",
+        "How do I get a seat in B.Tech?"
+      ],
+      "answer": "70% of seats are filled through AP EAPCET ranks via online counselling. The remaining 30% are filled under B-Category management quota based on 10+2 marks."
+    },
+    {
+      "question": "How are M.Tech seats allotted?",
+      "aliases": ["M.Tech seat allotment", "How are MTech admissions done?"],
+      "answer": "70% of seats are filled through GATE or PGECET ranks via online counselling. The remaining 30% are under B-Category based on B.Tech marks."
+    },
+    {
+      "question": "How are MBA and MCA seats allotted?",
+      "aliases": [
+        "MBA seat allotment",
+        "MCA seat allotment",
+        "How are MBA MCA admissions done?"
+      ],
+      "answer": "70% of seats are filled through APICET ranks via online counselling. The remaining 30% are under B-Category based on qualifying exam marks."
+    },
+    {
+      "question": "What is B-Category admission?",
+      "aliases": [
+        "What is management quota?",
+        "What is B Category?",
+        "How does management quota work?"
+      ],
+      "answer": "B-Category is the management quota. 30% of seats in every course are filled directly by the college based on merit in the qualifying exam, as per APSCHE guidelines."
+    },
+    {
+      "question": "How do I apply for B-Category admission?",
+      "aliases": [
+        "How to apply management quota?",
+        "Apply for B Category",
+        "Direct admission procedure"
+      ],
+      "answer": "You can apply online at admissions.nrtec.in or call 915-468-6203 or email admissions@nrtec.in."
+    },
+    {
+      "question": "What happens to vacant seats after counselling?",
+      "aliases": [
+        "Spot admission",
+        "Are there seats available after counselling?",
+        "Leftover seats after counselling"
+      ],
+      "answer": "Any seats left vacant after the final round of convener quota counselling are filled by the college through spot admissions."
+    },
+    {
+      "question": "How do I contact the admissions office?",
+      "aliases": ["Admissions contact", "Admission phone number", "Admission email"],
+      "answer": "Phone: 915-468-6203 or 810-630-6313. Email: admissions@nrtec.in. Website: admissions.nrtec.in."
+    },
+    {
+      "question": "What B.Tech courses are available and how many seats?",
+      "aliases": [
+        "B.Tech courses offered",
+        "List of BTech branches",
+        "How many seats in BTech?"
+      ],
+      "answer": "CSE has 720 seats, CSE AI has 300, CSE AI and ML has 240, ECE has 360, IT has 120, CSE Data Science has 120, Civil has 60, EEE has 60, Mechanical has 60, and CSE Cyber Security has 60 seats."
+    },
+    {
+      "question": "What PG courses are available and how many seats?",
+      "aliases": ["PG courses offered", "Postgraduate courses at NEC", "M.Tech MBA MCA seats"],
+      "answer": "MCA has 180 seats, MBA has 180 seats, M.Tech CSE has 36 seats. M.Tech specializations in Structural Engineering, Thermal Engineering, Machine Design, VLSI, Power and Industrial Drives, and Digital Electronics have seats ranging from 9 to 24."
+    },
+    {
+      "question": "How many seats are under convener quota and management quota for B.Tech?",
+      "aliases": [
+        "Convener vs management seats",
+        "How many convener seats?",
+        "How many management quota seats?"
+      ],
+      "answer": "For every B.Tech course, 70% of seats are convener quota filled via AP EAPCET counselling and 30% are management quota. For example, CSE has 504 convener seats and 216 management seats."
+    },
+    {
+      "question": "Is there an NRI quota for admissions?",
+      "aliases": ["NRI admission", "Can NRI students apply?", "NRI quota seats"],
+      "answer": "Yes. NEC offers NRI quota admissions for B.Tech. It is merit-based and follows APSCHE guidelines. Contact the admissions office at 915-468-6203 or admissions@nrtec.in for the schedule and application form."
+    },
+    {
+      "question": "What entrance exam do I need for B.Tech convener quota?",
+      "aliases": [
+        "B.Tech entrance exam",
+        "Which exam for BTech admission?",
+        "Do I need EAPCET for BTech?"
+      ],
+      "answer": "You need a valid AP EAPCET rank. Seats are allotted through online counselling conducted by APSCHE."
+    },
+    {
+      "question": "What entrance exam do I need for M.Tech convener quota?",
+      "aliases": ["M.Tech entrance exam", "Which exam for MTech admission?", "Do I need GATE for MTech?"],
+      "answer": "You need a valid GATE or PGECET score. Seats are allotted through APSCHE online counselling."
+    },
+    {
+      "question": "What entrance exam do I need for MBA or MCA convener quota?",
+      "aliases": ["MBA entrance exam", "MCA entrance exam", "Which exam for MBA MCA admission?"],
+      "answer": "You need a valid APICET rank. Seats are allotted through APSCHE online counselling."
+    },
+    {
+      "question": "Can I apply for admission without an entrance exam rank?",
+      "aliases": [
+        "Admission without entrance exam",
+        "No EAPCET rank admission",
+        "Direct admission without exam"
+      ],
+      "answer": "Yes. You can apply under B-Category management quota which is based on merit in your qualifying exam, without needing an entrance exam rank. Apply at admissions.nrtec.in."
+    },
+    {
+      "question": "Is NEC approved by AICTE?",
+      "aliases": ["Is NEC accredited?", "NEC affiliation", "Is NEC a recognized college?"],
+      "answer": "Yes. NEC is approved by AICTE, permanently affiliated to JNTUK Kakinada, has autonomous status, and is accredited by NAAC with an A+ grade."
+    },
+    {
+      "question": "Where do I apply for admission to NEC?",
+      "aliases": [
+        "How to apply to NEC?",
+        "NEC admission application",
+        "Apply to Narasaraopeta Engineering College"
+      ],
+      "answer": "Apply online at admissions.nrtec.in, or call 915-468-6203 or 810-630-6313, or email admissions@nrtec.in."
+    },
+    {
+      "_comment": "General Placement Questions",
+      "question": "Does NEC provide placement assistance?",
+      "aliases": [
+        "Are there placements at NEC?",
+        "Does NEC help with jobs?",
+        "Placement support at NEC"
+      ],
+      "answer": "Yes. NEC provides 100% placement assistance through its dedicated Training and Placement Cell, which connects students with top companies across IT and core engineering sectors."
+    },
+    {
+      "question": "What companies recruit from NEC?",
+      "aliases": ["Which companies come to NEC?", "Top recruiters at NEC", "Who hires from NEC?"],
+      "answer": "Top recruiters include Accenture, TCS, Tech Mahindra, Cognizant, Savantis Solutions, COAPPS, Rinex Technologies, ITC Ltd, and Thermopads among others."
+    },
+    {
+      "question": "What is the average placement package at NEC?",
+      "aliases": [
+        "What is the salary package at NEC?",
+        "How much do NEC students earn?",
+        "NEC placement package"
+      ],
+      "answer": "Packages vary by company. Accenture offers 4.6 to 6.5 LPA, TCS offers 3.5 to 7 LPA, Rinex Technologies offers 5.2 LPA, COAPPS offers 4 LPA, and Tech Mahindra offers 3.25 LPA."
+    },
+    {
+      "question": "How many students get placed at NEC?",
+      "aliases": ["NEC placement numbers", "How many students are placed?", "NEC placement statistics"],
+      "answer": "NEC has strong placement records. For example, Accenture selected 108 students, Savantis Solutions selected 60, COAPPS selected 57, TVS Brakes selected 52, and Rinex Technologies selected 23 students in recent drives."
+    },
+    {
+      "_comment": "Training and Preparation Questions",
+      "question": "Does NEC provide training before placements?",
+      "aliases": [
+        "Placement training at NEC",
+        "Pre-placement training",
+        "How does NEC prepare students for jobs?"
+      ],
+      "answer": "Yes. NEC's Training and Placement Cell conducts soft skills training, employability skills programs, certification programs, APSSDC training, and capability enhancement programs to prepare students for placements."
+    },
+    {
+      "question": "Does NEC have an incubation center?",
+      "aliases": ["Startup support at NEC", "Entrepreneurship at NEC", "NEC incubation"],
+      "answer": "Yes. NEC has an Incubation Centre and Venture Development Centre in association with i2E North Eastern University, USA, and an entrepreneurship cell backed by TiE Hyderabad."
+    },
+    {
+      "question": "Does NEC offer internship opportunities?",
+      "aliases": [
+        "Internships at NEC",
+        "Can I get an internship through NEC?",
+        "NEC internship support"
+      ],
+      "answer": "Yes. The Training and Placement Cell actively organizes on-campus, off-campus drives, and internship opportunities for students across disciplines."
+    },
+    {
+      "_comment": "Placement Contact Questions",
+      "question": "How do I contact the placement cell at NEC?",
+      "aliases": ["Placement cell contact", "Placement email NEC", "Who handles placements at NEC?"],
+      "answer": "You can contact the Placement Head Mr. Syam Kumar Reddy at placements@nrtec.in or call 9885553622."
+    },
+    {
+      "question": "Who heads the placement cell at NEC?",
+      "aliases": ["Placement officer NEC", "Who is the placement head?", "NEC placement in charge"],
+      "answer": "The Placement Cell is headed by Mr. Syam Kumar Reddy Kolli, and the Training Head is Dr. Ananda Oliveti, a strategic HR and Learning and Development professional with 15 years of experience."
+    },
+    {
+      "_comment": "Industry and Sector Questions",
+      "question": "Does NEC have placements in core engineering sectors?",
+      "aliases": [
+        "Core engineering placements NEC",
+        "Mechanical civil EEE placements",
+        "Non-IT placements at NEC"
+      ],
+      "answer": "Yes. NEC facilitates placements in both IT and core engineering sectors. Companies like TVS Brakes India recruit core engineering students directly from the campus."
+    },
+    {
+      "question": "Does NEC have tie-ups with any industries?",
+      "aliases": [
+        "Industry collaborations NEC",
+        "NEC MOU with companies",
+        "Industry partnerships at NEC"
+      ],
+      "answer": "Yes. NEC has collaborations including an Indo-European Skilling Centre with APSSDC and ARC Germany, a Venture Development Centre with i2E North Eastern University USA, and an entrepreneurship cell with TiE Hyderabad."
+    }
+  ]
+}

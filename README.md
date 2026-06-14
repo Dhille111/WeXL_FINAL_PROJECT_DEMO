@@ -18,7 +18,7 @@ Build and deploy your first voice AI bot in under 10 minutes. Develop locally, t
 You'll need API keys from three services:
 
 - [Deepgram](https://console.deepgram.com/signup) for Speech-to-Text
-- [OpenAI](https://auth.openai.com/create-account) for LLM inference
+- [Google AI Studio](https://aistudio.google.com/) for Gemini Live LLM inference
 - [Cartesia](https://play.cartesia.ai/sign-up) for Text-to-Speech
 
 > 💡 **Tip**: Sign up for all three now. You'll need them for both local and cloud deployment.
@@ -46,8 +46,8 @@ Navigate to the quickstart directory and set up your environment.
 
    ```ini
    DEEPGRAM_API_KEY=your_deepgram_api_key
-   OPENAI_API_KEY=your_openai_api_key
    CARTESIA_API_KEY=your_cartesia_api_key
+   GOOGLE_API_KEY=your_google_api_key
    ```
 
 3. Set up a virtual environment and install dependencies
@@ -165,6 +165,14 @@ pipecat cloud deploy
 **🔧 Customize your bot**: Modify `bot.py` to change personality, add functions, or integrate with your data  
 **📚 Learn more**: Check out [Pipecat's docs](https://docs.pipecat.ai/) for advanced features  
 **💬 Get help**: Join [Pipecat's Discord](https://discord.gg/pipecat) to connect with the community
+
+### Predefined questions (FAQ)
+
+This quickstart supports a simple predefined Q&A file so your voice agent can give consistent answers to specific questions.
+
+1. Edit `predefined_qa.json` and add your questions + answers.
+2. (Optional) Point to a different file via `PREDEFINED_QA_PATH` in your `.env`.
+3. Restart the bot.
 
 ### Troubleshooting
 

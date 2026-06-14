@@ -201,3 +201,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Angular
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Maven / Java
+**/target/
+**/.mvn/
+**/.idea/
+**/.settings/
+**/.classpath
+**/.project
+**/*.class
+**/*.jar
+**/*.war
+
+# OS files
+Thumbs.db
+Desktop.ini

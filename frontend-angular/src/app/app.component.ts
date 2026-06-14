@@ -1,0 +1,179 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterModule } from '@angular/router';
+import { AuthService } from './core/auth.service';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterModule],
+  template: `
+    <div class="app-layout">
+      <!-- Side Navigation Bar for Logged-In Users -->
+      <aside class="sidebar" *ngIf="authService.isAuthenticated()">
+        <div class="sidebar-logo">
+          <span class="logo-accent">NEC</span> Voice
+        </div>
+        
+        <nav class="sidebar-nav">
+          <a routerLink="/voice" routerLinkActive="active-route" class="nav-item">
+            <span class="material-icons">mic</span>
+            <span>Voice Agent</span>
+          </a>
+          <a routerLink="/dashboard" routerLinkActive="active-route" class="nav-item">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <span class="material-icons user-avatar">account_circle</span>
+            <div class="details">
+              <span class="username">{{ authService.currentUser()?.username }}</span>
+              <span class="role">User</span>
+            </div>
+          </div>
+          <button class="btn-logout" (click)="authService.logout()">
+            <span class="material-icons">logout</span>
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Router Container -->
+      <main class="main-content" [class.no-sidebar]="!authService.isAuthenticated()">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  `,
+  styles: [`
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: #0d111a;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      box-sizing: border-box;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .logo-accent {
+      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-grow: 1;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: #9ca3af;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: white;
+    }
+
+    .nav-item.active-route {
+      background: linear-gradient(135deg, rgba(0, 153, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      color: #0099ff;
+    }
+
+    .sidebar-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-left: 0.5rem;
+    }
+
+    .user-avatar {
+      font-size: 2.25rem;
+      color: #9ca3af;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .username {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .role {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-logout:hover {
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .main-content {
+      flex-grow: 1;
+      min-width: 0;
+      position: relative;
+    }
+
+    .main-content.no-sidebar {
+      width: 100%;
+    }
+  `]
+})
+export class AppComponent {
+  constructor(public authService: AuthService) {}
+}
