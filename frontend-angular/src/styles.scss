@@ -6,13 +6,31 @@
   --bg-card: rgba(20, 24, 33, 0.7);
   --border-color: rgba(255, 255, 255, 0.08);
   
-  --primary-glow: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  --primary-glow: linear-gradient(135deg, #9d227c 0%, #8b5cf6 50%, #ec4899 100%);
   --text-main: #f3f4f6;
   --text-muted: #9ca3af;
   
-  --color-blue: #0099ff;
+  --color-primary: #c084fc;          /* Vibrant purple for dark mode text/icons */
+  --color-primary-dark: #9d227c;     /* Deep college logo purple */
+  --color-primary-light: #d8b4fe;    /* Light purple glow */
+  --primary-gradient: linear-gradient(135deg, #9d227c 0%, #7c3aed 100%);
+  --color-blue: var(--color-primary);
   --color-violet: #8a2be2;
   --color-green: #10b981;
+}
+
+body.light-theme {
+  --bg-dark: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --border-color: rgba(15, 23, 42, 0.08);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  
+  --color-primary: #9d227c;          /* Deep college logo purple for light mode text/icons */
+  --color-primary-dark: #701a56;     /* Darker purple */
+  --color-primary-light: #f472b6;    /* Pink highlight */
+  --primary-gradient: linear-gradient(135deg, #9d227c 0%, #7c3aed 100%);
+  --color-blue: var(--color-primary);
 }
 
 html, body {
@@ -21,12 +39,205 @@ html, body {
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(10, 12, 16, 0.86), rgba(6, 8, 14, 0.94)), 
-              url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292-scaled.jpg') no-repeat center center fixed;
+              url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Outfit', sans-serif;
   color: var(--text-main);
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+body.light-theme {
+  background: linear-gradient(rgba(248, 250, 252, 0.85), rgba(241, 245, 249, 0.9)), 
+              url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Light Theme Sidebar and Nav styling overrides */
+body.light-theme .sidebar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-right: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .btn-theme-toggle {
+  background: rgba(15, 23, 42, 0.03) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  color: #475569 !important;
+}
+
+body.light-theme .btn-theme-toggle:hover {
+  background: rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+body.light-theme .nav-item {
+  color: #475569 !important;
+}
+
+body.light-theme .nav-item:hover {
+  background: rgba(15, 23, 42, 0.03) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .nav-item.active-route {
+  background: linear-gradient(135deg, rgba(157, 34, 124, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%) !important;
+  border: 1px solid rgba(157, 34, 124, 0.2) !important;
+  color: #9d227c !important;
+}
+
+body.light-theme .sidebar-footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .user-info .user-avatar,
+body.light-theme .user-info .role {
+  color: #64748b !important;
+}
+
+body.light-theme .user-info .username {
+  color: #0f172a !important;
+}
+
+/* Light Theme Component Overrides */
+body.light-theme .kpi-card, 
+body.light-theme .module-card, 
+body.light-theme .faq-card, 
+body.light-theme .faq-form-card, 
+body.light-theme .message-dialog {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .header-branding {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .header h1,
+body.light-theme .module-header h3,
+body.light-theme .kpi-val,
+body.light-theme .session-id,
+body.light-theme .faq-question {
+  color: #0f172a !important;
+}
+
+body.light-theme .subtitle,
+body.light-theme .kpi-title,
+body.light-theme .form-row label {
+  color: #475569 !important;
+}
+
+body.light-theme .faq-search-bar {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .faq-search-bar input {
+  color: #0f172a !important;
+}
+
+body.light-theme .faq-search-bar input::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.light-theme .form-row input, 
+body.light-theme .form-row textarea {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .btn-cancel {
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  color: #475569 !important;
+}
+
+body.light-theme .btn-cancel:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .session-row {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid rgba(15, 23, 42, 0.05) !important;
+}
+
+body.light-theme .session-row:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+body.light-theme .session-row.selected-session {
+  border-color: #9d227c !important;
+  background: rgba(157, 34, 124, 0.08) !important;
+}
+
+body.light-theme .log-bubble.user {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .log-bubble.agent {
+  background: rgba(157, 34, 124, 0.06) !important;
+  color: #9d227c !important;
+}
+
+body.light-theme .console-card, 
+body.light-theme .session-card, 
+body.light-theme .logs-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .console-header {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+body.light-theme .brand-title,
+body.light-theme .card-header h3,
+body.light-theme .status-text,
+body.light-theme .status-label,
+body.light-theme .log-message,
+body.light-theme .system-status-list,
+body.light-theme .voice-console-container h1,
+body.light-theme .voice-console-container h2,
+body.light-theme .voice-console-container h3,
+body.light-theme .voice-console-container p,
+body.light-theme .transcript-text {
+  color: #0f172a !important;
+}
+
+body.light-theme .status-value,
+body.light-theme .nav-link,
+body.light-theme .log-timestamp,
+body.light-theme .status-desc {
+  color: #475569 !important;
+}
+
+body.light-theme .nav-link:hover {
+  color: #9d227c !important;
+}
+
+body.light-theme .transcript-item.user {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .transcript-item.agent {
+  background: rgba(157, 34, 124, 0.06) !important;
+  border: 1px solid rgba(157, 34, 124, 0.1) !important;
+}
+
+body.light-theme .voice-orb.active {
+  background: radial-gradient(circle, rgba(157, 34, 124, 0.2) 0%, rgba(138, 43, 226, 0.05) 70%) !important;
+}
+
+body.light-theme .waveform-bar {
+  background: #9d227c !important;
+}
+
 
 /* Glassmorphism utility */
 .glass-panel {

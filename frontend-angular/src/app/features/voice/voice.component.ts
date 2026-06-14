@@ -241,7 +241,7 @@ import { VoiceService } from '../../services/voice.service';
     }
 
     .nav-link:hover {
-      color: #0099ff;
+      color: var(--color-primary);
     }
 
     .nav-icon {
@@ -342,7 +342,7 @@ import { VoiceService } from '../../services/voice.service';
       color: #f3f4f6;
     }
 
-    .text-blue { color: #0099ff; }
+    .text-blue { color: var(--color-primary); }
     .text-violet { color: #a78bfa; }
     .text-green { color: #10b981; }
     .text-red { color: #ef4444; }
@@ -395,7 +395,7 @@ import { VoiceService } from '../../services/voice.service';
 
     .log-line.success .log-msg { color: #10b981; }
     .log-line.warning .log-msg { color: #f59e0b; }
-    .log-line.info .log-msg { color: #0099ff; }
+    .log-line.info .log-msg { color: var(--color-primary); }
 
     /* Column 2: Visualizer Stage */
     .main-visualizer-card {
@@ -467,8 +467,8 @@ import { VoiceService } from '../../services/voice.service';
 
     .voice-orb.active-pulse {
       background: linear-gradient(135deg, #0f1c2c 0%, #09101a 100%);
-      border-color: rgba(0, 153, 255, 0.5);
-      box-shadow: 0 0 40px rgba(0, 153, 255, 0.3);
+      border-color: rgba(167, 139, 250, 0.5);
+      box-shadow: 0 0 40px rgba(167, 139, 250, 0.3);
     }
 
     .voice-icon {
@@ -476,7 +476,7 @@ import { VoiceService } from '../../services/voice.service';
       color: #9ca3af;
     }
 
-    .voice-orb.standby .voice-icon { color: #0099ff; }
+    .voice-orb.standby .voice-icon { color: var(--color-primary); }
 
     /* Fluid Glowing Waves */
     .holographic-wave-container {
@@ -524,7 +524,7 @@ import { VoiceService } from '../../services/voice.service';
       width: 130px;
       height: 130px;
       border: 2px solid transparent;
-      border-top-color: #0099ff;
+      border-top-color: var(--color-primary);
       border-radius: 50%;
       animation: spinRing 2s infinite linear;
     }
@@ -557,8 +557,8 @@ import { VoiceService } from '../../services/voice.service';
     }
 
     .vocal-status-label .pulse-text {
-      color: #0099ff;
-      text-shadow: 0 0 10px rgba(0, 153, 255, 0.4);
+      color: var(--color-primary);
+      text-shadow: 0 0 10px rgba(167, 139, 250, 0.4);
       animation: textPulse 2s infinite ease-in-out;
     }
 
@@ -608,14 +608,14 @@ import { VoiceService } from '../../services/voice.service';
     }
 
     .btn-console-session {
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      background: var(--primary-gradient);
       border: none;
-      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(157, 34, 124, 0.25);
     }
 
     .btn-console-session:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 153, 255, 0.35);
+      box-shadow: 0 6px 20px rgba(157, 34, 124, 0.4);
     }
 
     .btn-console-session.btn-connecting {
@@ -737,7 +737,7 @@ import { VoiceService } from '../../services/voice.service';
     }
 
     .user .role-tag {
-      color: #0099ff;
+      color: var(--color-primary);
     }
 
     .agent {
@@ -746,7 +746,7 @@ import { VoiceService } from '../../services/voice.service';
     }
 
     .agent .dialogue-content {
-      background: linear-gradient(135deg, rgba(0, 153, 255, 0.08) 0%, rgba(138, 43, 226, 0.08) 100%);
+      background: linear-gradient(135deg, rgba(157, 34, 124, 0.08) 0%, rgba(138, 43, 226, 0.08) 100%);
       border: 1px solid rgba(138, 43, 226, 0.18);
       color: #f3f4f6;
       border-bottom-left-radius: 2px;

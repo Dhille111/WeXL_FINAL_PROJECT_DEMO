@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { AuthService } from './core/auth.service';
 
@@ -14,6 +14,12 @@ import { AuthService } from './core/auth.service';
         <div class="sidebar-logo">
           <span class="logo-accent">NEC</span> Voice
         </div>
+        
+        <!-- Theme Toggle Button -->
+        <button class="btn-theme-toggle" (click)="toggleTheme()">
+          <span class="material-icons">{{ isLightTheme ? 'dark_mode' : 'light_mode' }}</span>
+          <span>{{ isLightTheme ? 'Dark Mode' : 'Light Mode' }}</span>
+        </button>
         
         <nav class="sidebar-nav">
           <a routerLink="/voice" routerLinkActive="active-route" class="nav-item">
@@ -68,14 +74,37 @@ import { AuthService } from './core/auth.service';
     .sidebar-logo {
       font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
       padding-left: 0.5rem;
     }
 
     .logo-accent {
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .btn-theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #9ca3af;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 500;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     .sidebar-nav {
@@ -103,9 +132,9 @@ import { AuthService } from './core/auth.service';
     }
 
     .nav-item.active-route {
-      background: linear-gradient(135deg, rgba(0, 153, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
-      border: 1px solid rgba(138, 43, 226, 0.2);
-      color: #0099ff;
+      background: linear-gradient(135deg, rgba(157, 34, 124, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+      border: 1px solid rgba(157, 34, 124, 0.2);
+      color: var(--color-primary);
     }
 
     .sidebar-footer {
@@ -174,6 +203,36 @@ import { AuthService } from './core/auth.service';
     }
   `]
 })
-export class AppComponent {
-  constructor(public authService: AuthService) {}
+export class AppComponent implements OnInit {
+  isLightTheme = false;
+
+  constructor(
+    public authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        this.isLightTheme = true;
+        document.body.classList.add('light-theme');
+      } else {
+        document.body.classList.remove('light-theme');
+      }
+    }
+  }
+
+  toggleTheme() {
+    this.isLightTheme = !this.isLightTheme;
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isLightTheme) {
+        document.body.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light-theme');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+  }
 }

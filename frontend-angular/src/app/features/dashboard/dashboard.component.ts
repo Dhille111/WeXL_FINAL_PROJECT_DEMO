@@ -248,7 +248,7 @@ export interface ChatMessage {
 
     .kpi-icon {
       font-size: 2.5rem;
-      color: #0099ff;
+      color: var(--color-primary);
       opacity: 0.8;
     }
 
@@ -280,7 +280,7 @@ export interface ChatMessage {
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
+      background: var(--primary-gradient);
       color: white;
       border: none;
       padding: 0.5rem 1rem;
@@ -339,7 +339,7 @@ export interface ChatMessage {
       background: rgba(255,255,255,0.03);
     }
 
-    .text-blue { color: #0099ff; }
+    .text-blue { color: var(--color-primary); }
     .text-red { color: #ef4444; }
 
     .faq-form-card {
@@ -412,8 +412,8 @@ export interface ChatMessage {
     }
 
     .session-row.selected-session {
-      border-color: #0099ff;
-      background: rgba(0, 153, 255, 0.05);
+      border-color: var(--color-primary);
+      background: rgba(167, 139, 250, 0.05);
     }
 
     .session-info {
@@ -436,7 +436,7 @@ export interface ChatMessage {
     }
 
     .session-tag.completed { background: rgba(16, 185, 129, 0.1); color: #10b981; }
-    .session-tag.active { background: rgba(0, 153, 255, 0.1); color: #0099ff; }
+    .session-tag.active { background: rgba(167, 139, 250, 0.1); color: var(--color-primary); }
     .session-tag.pending { background: rgba(255, 170, 0, 0.1); color: #ffaa00; }
 
     .message-dialog {
@@ -541,8 +541,8 @@ export interface ChatMessage {
     .faq-tile-card:hover {
       background: rgba(255, 255, 255, 0.03);
       transform: translateY(-2px);
-      border-color: rgba(0, 153, 255, 0.25);
-      box-shadow: 0 8px 25px rgba(0, 153, 255, 0.05);
+      border-color: rgba(167, 139, 250, 0.25);
+      box-shadow: 0 8px 25px rgba(167, 139, 250, 0.05);
     }
 
     .faq-tile-header {
@@ -552,7 +552,7 @@ export interface ChatMessage {
     }
 
     .faq-tile-icon {
-      color: #0099ff;
+      color: var(--color-primary);
       font-size: 1.5rem;
     }
 
