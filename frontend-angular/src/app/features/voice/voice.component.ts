@@ -12,7 +12,7 @@ import { VoiceService } from '../../services/voice.service';
       <!-- Header -->
       <div class="console-header">
         <div class="brand-section" routerLink="/dashboard">
-          <span class="brand-accent">NEC</span>
+          <img class="college-logo" src="https://www.nrtec.in/wp-content/uploads/2017/03/NEClogo.png" alt="NEC College Logo" />
           <span class="brand-title">Enterprise AI Portal</span>
         </div>
         <div class="header-actions">
@@ -193,7 +193,7 @@ import { VoiceService } from '../../services/voice.service';
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      background: radial-gradient(circle at top right, #131722 0%, #06080e 100%);
+      background: transparent;
     }
 
     .console-header {
@@ -208,17 +208,13 @@ import { VoiceService } from '../../services/voice.service';
     .brand-section {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 1rem;
       cursor: pointer;
     }
 
-    .brand-accent {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      background: linear-gradient(135deg, #0099ff 0%, #8a2be2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .college-logo {
+      height: 42px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25)) brightness(1.1);
     }
 
     .brand-title {

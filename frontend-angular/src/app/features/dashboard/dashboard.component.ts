@@ -29,9 +29,12 @@ export interface ChatMessage {
   imports: [CommonModule, FormsModule],
   template: `
     <div class="dashboard-container">
-      <div class="header">
-        <h1>NEC Enterprise Management Dashboard</h1>
-        <p class="subtitle">Analyze analytics and manage knowledge base FAQs</p>
+      <div class="header-branding">
+        <img class="college-logo" src="https://www.nrtec.in/wp-content/uploads/2017/03/NEClogo.png" alt="NEC College Logo" />
+        <div class="header">
+          <h1>NEC Enterprise Management Dashboard</h1>
+          <p class="subtitle">Analyze analytics and manage knowledge base FAQs</p>
+        </div>
       </div>
 
       <!-- Key Performance Indicators -->
@@ -179,12 +182,25 @@ export interface ChatMessage {
   styles: [`
     .dashboard-container {
       padding: 3rem;
-      background: radial-gradient(circle at bottom left, #121824 0%, #0a0c10 80%);
+      background: transparent;
       min-height: 100vh;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 1.5rem;
+    }
+
+    .header-branding .college-logo {
+      height: 60px;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25)) brightness(1.1);
     }
 
     .header h1 {

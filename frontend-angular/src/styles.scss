@@ -20,7 +20,9 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bg-dark);
+  background: linear-gradient(rgba(10, 12, 16, 0.86), rgba(6, 8, 14, 0.94)), 
+              url('https://www.nrtec.in/wp-content/uploads/2023/06/DJI_0292-scaled.jpg') no-repeat center center fixed;
+  background-size: cover;
   font-family: 'Outfit', sans-serif;
   color: var(--text-main);
   overflow-x: hidden;
