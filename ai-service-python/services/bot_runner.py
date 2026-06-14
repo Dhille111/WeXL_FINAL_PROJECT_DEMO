@@ -6,7 +6,7 @@ from loguru import logger
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineParams, PipelineTask
-from pipecat.services.google.gemini_live.llm import GeminiLiveLLMService
+from pipecat.services.google.gemini_live.llm import GeminiLiveLLMService, InputParams, GeminiVADParams
 from pipecat.transports.services.daily import DailyTransport, DailyTransportParams
 
 DAILY_API_URL = "https://api.daily.co/v1"
@@ -110,8 +110,13 @@ class VoiceBotInstance:
 
         llm = GeminiLiveLLMService(
             api_key=os.getenv("GOOGLE_API_KEY", ""),
-            voice_name="Puck",
+            voice_id="Puck",
             system_instruction=self.system_instruction,
+            params=InputParams(
+                vad=GeminiVADParams(
+                    silence_duration_ms=200
+                )
+            )
         )
 
         # Connect the Daily audio input directly to Gemini, and Gemini audio output back to Daily
